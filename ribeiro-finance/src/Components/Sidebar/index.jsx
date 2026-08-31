@@ -1,60 +1,58 @@
-import { Link } from "react-router-dom";
-import "./Sidebar.css";
+import "./Sidebar.css"
 
 function Sidebar() {
   return (
     <aside className="sidebar">
 
-      {/* Logo e usuário */}
-      <div className="perfil">
-
-        <div className="logo">
-          <img src="/logo.png" alt="Ribeiro Finance" />
-        </div>
-
-        <div className="perfil-info">
-          <strong>RIBEIRO FINANCE</strong>
-          <span>Administrador</span>
-        </div>
-
+      <div className="sidebar-logo">
+        <div className="logo-icon">S</div>
+        <span>StudyFlow</span>
       </div>
 
-      {/* Menu */}
-      <nav className="menu">
+      <nav className="sidebar-menu">
 
-        <Link to="/" className="menu-item">
-          <i className="fa-solid fa-chart-column"></i>
+        <span className="menu-label">MENU</span>
+
+        <a href="#" className="menu-item active">
+          <span className="menu-icon">⌂</span>
           <span>Dashboard</span>
-        </Link>
+        </a>
 
-        <Link to="/adicionar-gasto" className="menu-item">
-          <i className="fa-solid fa-circle-plus"></i>
-          <span>Adicionar gastos</span>
-        </Link>
+        <a href="#" className="menu-item">
+          <span className="menu-icon">✓</span>
+          <span>Tarefas</span>
+        </a>
 
-        <Link to="/analises" className="menu-item">
-          <i className="fa-solid fa-arrow-trend-up"></i>
-          <span>Análises</span>
-        </Link>
+        <a href="#" className="menu-item">
+          <span className="menu-icon">▣</span>
+          <span>Matérias</span>
+        </a>
 
-        <Link to="/metas" className="menu-item">
-          <i className="fa-solid fa-bullseye"></i>
-          <span>Metas</span>
-        </Link>
+        <a href="#" className="menu-item">
+          <span className="menu-icon">◴</span>
+          <span>Progresso</span>
+        </a>
 
-        <Link to="/configuracoes" className="menu-item">
-          <i className="fa-solid fa-gear"></i>
+        <span className="menu-label settings-label">
+          OUTROS
+        </span>
+
+        <a href="#" className="menu-item">
+          <span className="menu-icon">⚙</span>
           <span>Configurações</span>
-        </Link>
+        </a>
 
       </nav>
 
-      {/* Logout */}
-      <div className="logout">
-        <button>
-          <i className="fa-solid fa-right-from-bracket"></i>
-          <span>Logout</span>
-        </button>
+      <div className="sidebar-user">
+        <div className="user-avatar">
+          G
+        </div>
+
+        <div className="user-info">
+          <strong>Gustavo</strong>
+          <span>Estudante</span>
+        </div>
       </div>
 
     </aside>
