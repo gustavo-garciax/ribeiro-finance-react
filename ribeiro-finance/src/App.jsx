@@ -1,11 +1,8 @@
-import Cards from "./Components/Cards"
-import Sidebar from "./Components/Sidebar"
-
+import "./Global.css"
 function App() {
   return (
-    <div>
-      <Sidebar />
-      <Cards />
+    <div className="container">
+      <h1>oi</h1>
     </div>
   )
 }
