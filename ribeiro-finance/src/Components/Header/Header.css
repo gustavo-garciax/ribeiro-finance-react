@@ -1,0 +1,315 @@
+/* ================================
+   HEADER
+================================ */
+
+.header {
+  width: 100%;
+  height: 66px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding: 0 24px;
+
+  box-sizing: border-box;
+
+  background: #111827;
+  border-bottom: 1px solid #1f2937;
+}
+
+
+/* ================================
+   ÁREA DIREITA
+================================ */
+
+.header-right {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+}
+
+
+/* ================================
+   PESQUISA
+================================ */
+
+.search-box {
+  width: 230px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 12px;
+
+  box-sizing: border-box;
+
+  background: #1b2637;
+
+  border: 1px solid #2a3547;
+  border-radius: 10px;
+
+  color: #8d9bb3;
+
+  transition:
+    border-color 0.2s ease,
+    width 0.2s ease;
+}
+
+.search-box:focus-within {
+  border-color: #6366f1;
+}
+
+.search-box > span {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.search-box input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 13px;
+}
+
+.search-box input::placeholder {
+  color: #71809b;
+}
+
+
+/* ================================
+   BOTÕES
+================================ */
+
+.header-button {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid #2a3547;
+  border-radius: 10px;
+
+  background: #1b2637;
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.header-button:hover {
+  background: #263246;
+  border-color: #3a465b;
+}
+
+
+/* ================================
+   PERFIL
+================================ */
+
+.header-profile {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-left: 6px;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 70px;
+}
+
+.profile-info strong {
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.profile-info span {
+  margin-top: 1px;
+
+  color: #71809b;
+
+  font-size: 9px;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+
+  .header {
+    padding: 0 18px;
+  }
+
+  .search-box {
+    width: 190px;
+  }
+
+}
+
+
+/* ================================
+   TABLET PEQUENO
+================================ */
+
+@media (max-width: 700px) {
+
+  .search-box {
+    width: 160px;
+  }
+
+  .profile-info {
+    display: none;
+  }
+
+}
+
+
+/* ================================
+   CELULAR
+================================ */
+
+@media (max-width: 600px) {
+
+  .header {
+    height: 60px;
+
+    padding: 0 14px;
+  }
+
+  .header-right {
+    width: 100%;
+
+    justify-content: flex-end;
+
+    gap: 7px;
+  }
+
+  .search-box {
+    flex: 1;
+
+    width: auto;
+    max-width: none;
+
+    height: 38px;
+  }
+
+  .header-button {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+  }
+
+  .header-profile {
+    margin-left: 0;
+  }
+
+  .profile-avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+}
+
+
+/* ================================
+   CELULAR PEQUENO
+================================ */
+
+@media (max-width: 400px) {
+
+  .search-box {
+    max-width: 150px;
+  }
+
+  .search-box input {
+    font-size: 12px;
+  }
+
+  .search-box > span {
+    font-size: 17px;
+  }
+
+  .header-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .profile-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+}
+
+
+/* ================================
+   CELULAR MUITO PEQUENO
+================================ */
+
+@media (max-width: 340px) {
+
+  .search-box {
+    max-width: 110px;
+  }
+
+  .header-button {
+    display: none;
+  }
+
+}

@@ -1,36 +1,44 @@
-.sidebar {
-  width: 250px;
-  height: 100vh;
+/* ================================
+   SIDEBAR - DESKTOP
+================================ */
 
+.sidebar {
+  width: 238px;
+  height: 100vh;
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
 
   display: flex;
   flex-direction: column;
 
-  padding: 24px 16px;
-
   background: #111827;
-  color: #fff;
+  color: #ffffff;
 
-  border-right: 1px solid #1f2937;
+  box-sizing: border-box;
+  z-index: 1000;
 }
 
-/* LOGO */
+
+/* ================================
+   LOGO
+================================ */
 
 .sidebar-logo {
+  height: 66px;
+
   display: flex;
   align-items: center;
   gap: 12px;
 
-  padding: 0 12px;
-  margin-bottom: 45px;
+  padding: 0 26px;
+
+  box-sizing: border-box;
 }
 
 .logo-icon {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
 
   display: flex;
   align-items: center;
@@ -38,96 +46,131 @@
 
   border-radius: 10px;
 
-  background: #6366f1;
-  color: white;
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
 
-  font-size: 20px;
+  color: white;
+  font-size: 17px;
   font-weight: 700;
+
+  flex-shrink: 0;
 }
 
 .sidebar-logo span {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
-/* MENU */
+
+/* ================================
+   MENU
+================================ */
 
 .sidebar-menu {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+
+  padding: 20px 15px 0;
 }
 
 .menu-label {
-  margin: 0 12px 10px;
+  margin: 0 11px 13px;
+
+  color: #71809b;
 
   font-size: 11px;
   font-weight: 600;
 
-  color: #6b7280;
   letter-spacing: 1px;
 }
 
 .menu-item {
-  height: 46px;
+  width: 100%;
+  height: 44px;
 
   display: flex;
   align-items: center;
-  gap: 13px;
 
-  padding: 0 13px;
+  gap: 15px;
+
+  padding: 0 15px;
+  margin-bottom: 6px;
+
+  box-sizing: border-box;
 
   border-radius: 10px;
 
-  color: #9ca3af;
+  color: #9aa8c1;
   text-decoration: none;
 
   font-size: 14px;
-  font-weight: 500;
 
-  transition: 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .menu-item:hover {
-  background: #1f2937;
-  color: #fff;
+  background: #1a2335;
+  color: #ffffff;
 }
 
 .menu-item.active {
-  background: #6366f1;
-  color: #fff;
+  background: linear-gradient(
+    135deg,
+    #6258e8,
+    #7167f0
+  );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 20px rgba(99, 102, 241, 0.25);
 }
 
 .menu-icon {
-  width: 20px;
+  width: 15px;
 
   display: flex;
+  align-items: center;
   justify-content: center;
 
-  font-size: 17px;
+  font-size: 15px;
+
+  flex-shrink: 0;
 }
 
 .settings-label {
-  margin-top: 30px;
+  margin-top: 46px;
 }
 
-/* USUÁRIO */
+
+/* ================================
+   USUÁRIO
+================================ */
 
 .sidebar-user {
   margin-top: auto;
 
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 15px 10px;
+
+  border-top: 1px solid #202a3b;
+
   display: flex;
   align-items: center;
+
   gap: 12px;
-
-  padding: 14px 10px;
-
-  border-top: 1px solid #1f2937;
 }
 
 .user-avatar {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
 
   display: flex;
   align-items: center;
@@ -135,22 +178,214 @@
 
   border-radius: 50%;
 
-  background: #6366f1;
+  background: linear-gradient(
+    135deg,
+    #6962ee,
+    #8b7cf6
+  );
 
-  font-weight: 700;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  flex-shrink: 0;
 }
 
 .user-info {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+
+  min-width: 0;
 }
 
 .user-info strong {
-  font-size: 14px;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .user-info span {
-  font-size: 11px;
-  color: #6b7280;
+  margin-top: 2px;
+
+  color: #71809b;
+
+  font-size: 10px;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+
+  .sidebar {
+    width: 80px;
+  }
+
+  /* Logo */
+
+  .sidebar-logo {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .sidebar-logo > span {
+    display: none;
+  }
+
+
+  /* Menu */
+
+  .sidebar-menu {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .menu-label {
+    display: none;
+  }
+
+  .menu-item {
+    justify-content: center;
+
+    padding: 0;
+
+    gap: 0;
+  }
+
+  .menu-item > span:last-child {
+    display: none;
+  }
+
+  .menu-icon {
+    width: auto;
+    font-size: 17px;
+  }
+
+
+  /* Configurações */
+
+  .settings-label {
+    display: none;
+  }
+
+
+  /* Usuário */
+
+  .sidebar-user {
+    justify-content: center;
+
+    margin-left: 10px;
+    margin-right: 10px;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .user-info {
+    display: none;
+  }
+}
+
+
+/* ================================
+   CELULAR
+================================ */
+
+@media (max-width: 600px) {
+
+  .sidebar {
+    width: 238px;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.25s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+
+  /* Volta ao tamanho normal */
+
+  .sidebar-logo {
+    justify-content: flex-start;
+
+    padding: 0 26px;
+  }
+
+  .sidebar-logo > span {
+    display: block;
+  }
+
+
+  .sidebar-menu {
+    padding: 20px 15px 0;
+  }
+
+  .menu-label {
+    display: block;
+  }
+
+  .menu-item {
+    justify-content: flex-start;
+
+    gap: 15px;
+
+    padding: 0 15px;
+  }
+
+  .menu-item > span:last-child {
+    display: block;
+  }
+
+  .settings-label {
+    display: block;
+  }
+
+
+  /* Usuário */
+
+  .sidebar-user {
+    justify-content: flex-start;
+
+    margin-left: 15px;
+    margin-right: 15px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .user-info {
+    display: flex;
+  }
+}
+
+
+/* ================================
+   TELAS MUITO PEQUENAS
+================================ */
+
+@media (max-width: 360px) {
+
+  .sidebar {
+    width: 220px;
+  }
+
+  .sidebar-logo {
+    padding: 0 20px;
+  }
+
+  .sidebar-menu {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .menu-item {
+    padding: 0 12px;
+  }
 }
