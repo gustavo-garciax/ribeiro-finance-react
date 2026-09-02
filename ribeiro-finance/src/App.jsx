@@ -1,14 +1,33 @@
-import Header from "./Components/Header"
-import Sidebar from "./Components/Sidebar"
-import "./Global.css"
+import Sidebar from "./Components/Sidebar";
+import Header from "./Components/Header";
+import StatCard from "./Components/StatCard";
+import TaskCard from "./Components/TaskCard";
+import ProgressCard from "./Components/ProgressCard";
+
+
 function App() {
   return (
-    <div className="container">
+    <>
       <Sidebar />
 
       <Header />
-    </div>
-  )
+
+      <main>
+
+        <h1>Olá, Gustavo! 👋</h1>
+
+        <div className="stats">
+          <StatCard />
+        </div>
+
+      </main>
+
+      <TaskCard />
+
+      <ProgressCard />
+
+    </>
+  );
 }
 
-export default App
+export default App;

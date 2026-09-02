@@ -1,0 +1,297 @@
+/* ================================
+   TASK CARD
+================================ */
+
+.task-card {
+  width: calc(100% - 238px);
+
+  margin-left: 238px;
+
+  margin-top: 25px;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.task-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.task-card-header h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.task-card-header span {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+.task-card-header button {
+  padding: 9px 14px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #6366f1;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.task-card-header button:hover {
+  background: #f5f3ff;
+  border-color: #6366f1;
+}
+
+
+/* ================================
+   LISTA
+================================ */
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ================================
+   TAREFA
+================================ */
+
+.task-item {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 18px 4px;
+
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+
+/* ================================
+   CHECK
+================================ */
+
+.task-check {
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.task-check:hover {
+  border-color: #6366f1;
+}
+
+
+/* ================================
+   TAREFA CONCLUÍDA
+================================ */
+
+.task-item.completed .task-check {
+  border-color: #6366f1;
+
+  background: #6366f1;
+}
+
+.task-item.completed .task-info strong {
+  color: #9ca3af;
+
+  text-decoration: line-through;
+}
+
+.task-item.completed .task-info span {
+  color: #9ca3af;
+}
+
+
+/* ================================
+   INFORMAÇÕES
+================================ */
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.task-info strong {
+  color: #111827;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.task-info span {
+  margin-top: 4px;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+
+  .task-card {
+    width: calc(100% - 80px);
+
+    margin-left: 80px;
+
+    padding: 20px;
+  }
+}
+
+
+/* ================================
+   CELULAR
+================================ */
+
+@media (max-width: 600px) {
+
+  .task-card {
+    width: 100%;
+
+    margin-left: 0;
+
+    margin-top: 18px;
+
+    padding: 16px;
+  }
+
+  .task-card-header h2 {
+    font-size: 16px;
+  }
+
+  .task-card-header span {
+    font-size: 12px;
+  }
+
+  .task-card-header button {
+    padding: 8px 10px;
+
+    font-size: 12px;
+  }
+
+  .task-item {
+    padding: 15px 2px;
+  }
+}
+
+
+/* ================================
+   CELULAR PEQUENO
+================================ */
+
+@media (max-width: 480px) {
+
+  .task-card {
+    padding: 14px;
+  }
+
+  .task-card-header {
+    gap: 10px;
+  }
+
+  .task-card-header button {
+    padding: 7px 9px;
+  }
+
+  .task-info strong {
+    font-size: 13px;
+  }
+}
+
+.task-check {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  flex-shrink: 0;
+
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}

@@ -1,0 +1,85 @@
+.progress-card {
+  width: calc(100% - 238px);
+  margin-left: 238px;
+  margin-top: 25px;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.progress-header h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.progress-header span {
+  display: block;
+  margin-top: 5px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.progress-header strong {
+  color: #6366f1;
+  font-size: 24px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  margin-top: 22px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 72%;
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  border-radius: 10px;
+}
+
+.progress-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .progress-card {
+    width: calc(100% - 80px);
+    margin-left: 80px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .progress-card {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 18px;
+    padding: 16px;
+  }
+
+  .progress-header h2 {
+    font-size: 16px;
+  }
+
+  .progress-header strong {
+    font-size: 20px;
+  }
+}
