@@ -1,0 +1,350 @@
+.error-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12), transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(98, 88, 232, 0.35), transparent 35%),
+    linear-gradient(135deg, #6258e8, #7167f0);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #fff;
+}
+
+/* Fundo */
+
+.error-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 45px 45px;
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  pointer-events: none;
+}
+
+.error-page::after {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+/* Glows */
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(5px);
+  animation: float 8s ease-in-out infinite;
+}
+
+.glow-1 {
+  width: 260px;
+  height: 260px;
+  top: -80px;
+  left: -80px;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.glow-2 {
+  width: 350px;
+  height: 350px;
+  right: -120px;
+  bottom: -130px;
+  background: rgba(49, 37, 170, 0.28);
+  animation-delay: -3s;
+}
+
+/* Card */
+
+.error-card {
+  width: min(620px, 100%);
+  position: relative;
+  z-index: 2;
+  padding: 58px 55px;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 32px;
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 35px 90px rgba(35, 28, 120, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+  animation: cardEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ícone */
+
+.icon {
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 38px;
+
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 24px;
+
+  box-shadow:
+    0 15px 35px rgba(40, 30, 150, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+  transform: rotate(-5deg);
+  animation: iconFloat 4s ease-in-out infinite;
+}
+
+/* Badge */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Título */
+
+.error-card h1 {
+  margin: 24px 0 18px;
+
+  font-size: clamp(38px, 6vw, 58px);
+  line-height: 1.02;
+  letter-spacing: -2.5px;
+  font-weight: 850;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff 10%,
+    #eeeaff 50%,
+    #d4ceff 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Texto */
+
+.error-card p {
+  max-width: 480px;
+  margin: 0 auto;
+
+  color: rgba(255, 255, 255, 0.76);
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Botão */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin-top: 32px;
+  padding: 15px 24px;
+
+  border-radius: 14px;
+
+  background: #fff;
+  color: #6258e8;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  box-shadow:
+    0 12px 30px rgba(30, 20, 120, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.button:hover {
+  transform: translateY(-4px) scale(1.02);
+
+  background: #f8f7ff;
+
+  box-shadow:
+    0 18px 40px rgba(30, 20, 120, 0.3),
+    0 0 35px rgba(255, 255, 255, 0.18);
+}
+
+.button:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* Decoração */
+
+.study-decoration {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+
+  margin-top: 38px;
+
+  opacity: 0.65;
+}
+
+.study-decoration span {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  font-size: 18px;
+
+  animation: decorationFloat 5s ease-in-out infinite;
+}
+
+.study-decoration span:nth-child(2) {
+  animation-delay: -1.5s;
+}
+
+.study-decoration span:nth-child(3) {
+  animation-delay: -3s;
+}
+
+/* Animações */
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(25px, -30px);
+  }
+}
+
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: rotate(-5deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(3deg) translateY(-8px);
+  }
+}
+
+@keyframes decorationFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Responsivo */
+
+@media (max-width: 600px) {
+  .error-page {
+    padding: 20px;
+  }
+
+  .error-card {
+    padding: 42px 24px;
+    border-radius: 26px;
+  }
+
+  .icon {
+    width: 70px;
+    height: 70px;
+    font-size: 32px;
+    border-radius: 20px;
+  }
+
+  .error-card h1 {
+    font-size: 38px;
+    letter-spacing: -1.8px;
+  }
+
+  .error-card p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .button {
+    width: 100%;
+    margin-top: 26px;
+  }
+
+  .study-decoration {
+    margin-top: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

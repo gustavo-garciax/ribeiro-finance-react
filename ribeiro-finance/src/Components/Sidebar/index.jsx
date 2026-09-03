@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Sidebar.css"
 
 function Sidebar() {
@@ -13,34 +14,30 @@ function Sidebar() {
 
         <span className="menu-label">MENU</span>
 
-        <a href="#" className="menu-item active">
+        <Link to="/" className="menu-item active">
           <span className="menu-icon">⌂</span>
           <span>Dashboard</span>
-        </a>
+        </Link>
 
-        <a href="#" className="menu-item">
+        <Link to="/tarefas" className="menu-item active">
           <span className="menu-icon">✓</span>
           <span>Tarefas</span>
-        </a>
+        </Link>
 
-        <a href="#" className="menu-item">
+        <Link to="/materias" className="menu-item active">
           <span className="menu-icon">▣</span>
           <span>Matérias</span>
-        </a>
+        </Link>
 
-        <a href="#" className="menu-item">
+        <Link to="/progresso" className="menu-item active">
           <span className="menu-icon">◴</span>
           <span>Progresso</span>
-        </a>
+        </Link>
 
-        <span className="menu-label settings-label">
-          OUTROS
-        </span>
-
-        <a href="#" className="menu-item">
+        <Link to="/coonfiguracoes" className="menu-item active">
           <span className="menu-icon">⚙</span>
           <span>Configurações</span>
-        </a>
+        </Link>
 
       </nav>
 
@@ -51,7 +48,6 @@ function Sidebar() {
 
         <div className="user-info">
           <strong>Gustavo</strong>
-          <span>Estudante</span>
         </div>
       </div>
 

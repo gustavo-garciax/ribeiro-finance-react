@@ -1,6 +1,7 @@
-/* ================================
-   SIDEBAR
-================================ */
+
+/* ========================================
+   SIDEBAR — STUDYFLOW
+======================================== */
 
 .sidebar {
   width: 238px;
@@ -13,10 +14,22 @@
   display: flex;
   flex-direction: column;
 
-  background: #111827;
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(99, 102, 241, 0.08),
+      transparent 28%
+    ),
+    #111827;
+
   color: #ffffff;
 
   box-sizing: border-box;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+
+  box-shadow:
+    8px 0 30px rgba(0, 0, 0, 0.18);
 
   z-index: 1000;
 
@@ -26,9 +39,9 @@
 }
 
 
-/* ================================
+/* ========================================
    LOGO
-================================ */
+======================================== */
 
 .sidebar-logo {
   height: 66px;
@@ -41,6 +54,8 @@
   padding: 0 26px;
 
   box-sizing: border-box;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.035);
 }
 
 .logo-icon {
@@ -65,39 +80,71 @@
   font-weight: 700;
 
   flex-shrink: 0;
+
+  box-shadow:
+    0 6px 18px rgba(99, 102, 241, 0.35);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.sidebar-logo:hover .logo-icon {
+  transform: rotate(-5deg) scale(1.06);
+
+  box-shadow:
+    0 8px 25px rgba(139, 92, 246, 0.45);
 }
 
 .sidebar-logo span {
   font-size: 19px;
   font-weight: 700;
 
+  letter-spacing: -0.3px;
+
   white-space: nowrap;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #c7c9ff
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 
-/* ================================
+/* ========================================
    MENU
-================================ */
+======================================== */
 
 .sidebar-menu {
   display: flex;
   flex-direction: column;
 
-  padding: 20px 15px 0;
+  padding: 22px 15px 0;
 }
 
 .menu-label {
   margin: 0 11px 13px;
 
-  color: #71809b;
+  color: #66738c;
 
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 10px;
+  font-weight: 700;
 
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
 
+
+/* ========================================
+   MENU ITEM
+======================================== */
+
 .menu-item {
+  position: relative;
+
   width: 100%;
   height: 44px;
 
@@ -118,16 +165,103 @@
   text-decoration: none;
 
   font-size: 14px;
+  font-weight: 500;
+
+  overflow: hidden;
 
   transition:
-    background 0.2s ease,
-    color 0.2s ease;
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
+
+
+/* ========================================
+   BRILHO DO HOVER
+======================================== */
+
+.menu-item::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.035),
+    transparent
+  );
+
+  transition: left 0.5s ease;
+}
+
+.menu-item:hover::before {
+  left: 100%;
+}
+
+
+/* ========================================
+   HOVER
+======================================== */
 
 .menu-item:hover {
   background: #1a2335;
+
   color: #ffffff;
+
+  transform: translateX(3px);
+
+  box-shadow:
+    inset 3px 0 0 #7167f0,
+    0 6px 18px rgba(0, 0, 0, 0.12);
 }
+
+
+/* ========================================
+   ÍCONE
+======================================== */
+
+.menu-icon {
+  width: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #7f8ba3;
+
+  font-size: 15px;
+
+  flex-shrink: 0;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.menu-item:hover .menu-icon {
+  color: #8b83ff;
+
+  transform: scale(1.12);
+
+  filter:
+    drop-shadow(
+      0 0 5px rgba(124, 116, 245, 0.5)
+    );
+}
+
+
+/* ========================================
+   ITEM ATIVO
+======================================== */
 
 .menu-item.active {
   background: linear-gradient(
@@ -139,29 +273,49 @@
   color: #ffffff;
 
   box-shadow:
-    0 8px 20px rgba(99, 102, 241, 0.25);
+    0 8px 22px rgba(99, 102, 241, 0.25);
 }
 
-.menu-icon {
-  width: 15px;
+.menu-item.active .menu-icon {
+  color: #ffffff;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 15px;
-
-  flex-shrink: 0;
+  filter:
+    drop-shadow(
+      0 0 5px rgba(255, 255, 255, 0.3)
+    );
 }
+
+
+/* ========================================
+   HOVER DO ITEM ATIVO
+======================================== */
+
+.menu-item.active:hover {
+  background: linear-gradient(
+    135deg,
+    #6d63f0,
+    #7b70f5
+  );
+
+  transform: translateX(3px);
+
+  box-shadow:
+    0 10px 28px rgba(99, 102, 241, 0.35);
+}
+
+
+/* ========================================
+   CONFIGURAÇÕES
+======================================== */
 
 .settings-label {
   margin-top: 46px;
 }
 
 
-/* ================================
+/* ========================================
    USUÁRIO
-================================ */
+======================================== */
 
 .sidebar-user {
   margin-top: auto;
@@ -177,7 +331,22 @@
   align-items: center;
 
   gap: 12px;
+
+  transition:
+    background 0.25s ease,
+    border-radius 0.25s ease;
 }
+
+.sidebar-user:hover {
+  background: rgba(99, 102, 241, 0.06);
+
+  border-radius: 12px 12px 0 0;
+}
+
+
+/* ========================================
+   AVATAR
+======================================== */
 
 .user-avatar {
   width: 36px;
@@ -201,7 +370,26 @@
   font-weight: 600;
 
   flex-shrink: 0;
+
+  box-shadow:
+    0 5px 15px rgba(99, 102, 241, 0.25);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+.sidebar-user:hover .user-avatar {
+  transform: scale(1.06);
+
+  box-shadow:
+    0 7px 20px rgba(139, 124, 246, 0.4);
+}
+
+
+/* ========================================
+   INFORMAÇÕES DO USUÁRIO
+======================================== */
 
 .user-info {
   display: flex;
@@ -226,17 +414,15 @@
 }
 
 
-/* ================================
+/* ========================================
    TABLET
-================================ */
+======================================== */
 
 @media (max-width: 900px) {
 
   .sidebar {
     width: 80px;
   }
-
-  /* Logo */
 
   .sidebar-logo {
     padding: 0;
@@ -247,9 +433,6 @@
   .sidebar-logo span {
     display: none;
   }
-
-
-  /* Menu */
 
   .sidebar-menu {
     padding-left: 10px;
@@ -287,9 +470,6 @@
     display: none;
   }
 
-
-  /* Usuário */
-
   .sidebar-user {
     justify-content: center;
 
@@ -306,9 +486,9 @@
 }
 
 
-/* ================================
+/* ========================================
    CELULAR
-================================ */
+======================================== */
 
 @media (max-width: 600px) {
 
@@ -325,9 +505,6 @@
     transform: translateX(0);
   }
 
-
-  /* Logo */
-
   .sidebar-logo {
     height: 60px;
 
@@ -339,9 +516,6 @@
   .sidebar-logo span {
     display: block;
   }
-
-
-  /* Menu */
 
   .sidebar-menu {
     padding: 20px 15px 0;
@@ -378,9 +552,6 @@
     display: block;
   }
 
-
-  /* Usuário */
-
   .sidebar-user {
     justify-content: flex-start;
 
@@ -397,9 +568,9 @@
 }
 
 
-/* ================================
+/* ========================================
    CELULAR PEQUENO
-================================ */
+======================================== */
 
 @media (max-width: 360px) {
 
