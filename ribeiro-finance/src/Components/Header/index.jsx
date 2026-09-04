@@ -4,6 +4,9 @@ function Header() {
   return (
     <header className="header">
 
+      <div className="header-left">
+        <span className="header-brand">StudyFlow</span>
+      </div>
 
       <div className="header-right">
 

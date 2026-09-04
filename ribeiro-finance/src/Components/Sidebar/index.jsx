@@ -34,10 +34,6 @@ function Sidebar() {
           <span>Progresso</span>
         </Link>
 
-        <Link to="/coonfiguracoes" className="menu-item active">
-          <span className="menu-icon">⚙</span>
-          <span>Configurações</span>
-        </Link>
 
       </nav>
 
