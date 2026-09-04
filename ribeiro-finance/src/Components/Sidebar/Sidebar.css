@@ -1,4 +1,3 @@
-
 /* ========================================
    SIDEBAR — STUDYFLOW
 ======================================== */
@@ -589,5 +588,87 @@
 
   .menu-item {
     padding: 0 12px;
+  }
+}
+
+
+/* ========================================
+   OVERLAY (fundo escuro atrás da sidebar
+   quando ela abre no celular, clicando fora
+   fecha o menu — opcional, mas recomendado)
+======================================== */
+
+.sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 600px) {
+
+  .sidebar-overlay {
+    display: block;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    z-index: 999;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.25s ease;
+  }
+
+  .sidebar-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+
+/* ========================================
+   CONTEÚDO PRINCIPAL (Sidebar + Páginas)
+   ----------------------------------------
+   A .sidebar usa position: fixed, então ela
+   sai do fluxo normal do documento — o
+   conteúdo das páginas (Tarefas, Materias,
+   etc.) precisa desse margin-left para não
+   ficar escondido atrás dela.
+
+   Aplique a classe "app-content" na div que
+   envolve as páginas, no seu Layout/App:
+
+     <Sidebar />
+     <div className="app-content">
+       {children}
+     </div>
+======================================== */
+
+.app-content {
+  margin-left: 238px;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  transition: margin-left 0.3s ease;
+}
+
+/* Tablet: sidebar encolhe para 80px */
+@media (max-width: 900px) {
+
+  .app-content {
+    margin-left: 80px;
+  }
+}
+
+/* Celular: sidebar vira off-canvas (escondida por padrão) */
+@media (max-width: 600px) {
+
+  .app-content {
+    margin-left: 0;
   }
 }

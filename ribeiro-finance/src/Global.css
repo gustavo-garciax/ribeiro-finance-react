@@ -1,10 +1,44 @@
-/* =========================
-   RESET
-========================= */
-
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.main-content {
+  width: calc(100% - 238px);
+  margin-left: 238px;
+  padding-top: 66px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .main-content {
+    width: calc(100% - 80px);
+    margin-left: 80px;
+    padding-top: 66px;
+  }
+}
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+  .main-content {
+    width: 100%;
+    margin-left: 0;
+    padding-top: 60px;
+  }
+}

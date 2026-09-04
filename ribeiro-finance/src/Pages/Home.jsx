@@ -1,7 +1,6 @@
 import ProgressCard from "../Components/ProgressCard";
-import Sidebar from "../Components/Sidebar";
 import StatCard from "../Components/StatCard";
-import TaskCard from "../Components/TaskCard";
+import TaskCard from "../Components/TaskCard"; 
 
 export default function Home() {
     return (

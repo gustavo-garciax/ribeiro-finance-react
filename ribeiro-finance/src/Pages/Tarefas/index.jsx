@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "./Tarefas.css";
 
@@ -32,43 +32,24 @@ function Tarefas() {
 
 
   // ================================
-  // TAREFAS FIXAS
+  // TAREFAS
   // ================================
 
-  const [tarefas, setTarefas] = useState([
-    {
-      id: 1,
-      titulo: "Estudar Matemática",
-      data: formatarData(hoje),
-      horario: "08:00",
-      prioridade: "Alta",
-      concluida: false
-    },
-    {
-      id: 2,
-      titulo: "Revisar conteúdo da aula",
-      data: formatarData(hoje),
-      horario: "14:00",
-      prioridade: "Média",
-      concluida: false
-    },
-    {
-      id: 3,
-      titulo: "Fazer exercícios de programação",
-      data: formatarData(hoje),
-      horario: "18:30",
-      prioridade: "Alta",
-      concluida: false
-    },
-    {
-      id: 4,
-      titulo: "Ler capítulo do livro",
-      data: formatarData(hoje),
-      horario: "20:00",
-      prioridade: "Baixa",
-      concluida: true
-    }
-  ]);
+  const [tarefas, setTarefas] = useState([]);
+
+
+  // ================================
+  // BUSCAR TAREFAS DO DB.JSON
+  // ================================
+
+  useEffect(() => {
+    fetch("http://localhost:3000/tarefas")
+      .then((res) => res.json())
+      .then((data) => setTarefas(data))
+      .catch((error) => {
+        console.error("Erro ao buscar tarefas:", error);
+      });
+  }, []);
 
 
   // ================================
@@ -77,7 +58,10 @@ function Tarefas() {
 
   const temTarefaNoDia = (date) => {
     const dataFormatada = formatarData(date);
-    return tarefas.some((tarefa) => tarefa.data === dataFormatada);
+
+    return tarefas.some(
+      (tarefa) => tarefa.data === dataFormatada
+    );
   };
 
 
@@ -85,7 +69,7 @@ function Tarefas() {
   // ADICIONAR TAREFA
   // ================================
 
-  const adicionarTarefa = (e) => {
+  const adicionarTarefa = async (e) => {
     e.preventDefault();
 
     if (!novaTarefa.trim()) {
@@ -93,7 +77,6 @@ function Tarefas() {
     }
 
     const tarefa = {
-      id: Date.now(),
       titulo: novaTarefa,
       data: dataSelecionada,
       horario: horario || "Sem horário",
@@ -101,11 +84,29 @@ function Tarefas() {
       concluida: false
     };
 
-    setTarefas([...tarefas, tarefa]);
+    try {
+      const resposta = await fetch(
+        "http://localhost:3000/tarefas",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(tarefa)
+        }
+      );
 
-    setNovaTarefa("");
-    setHorario("");
-    setPrioridade("Média");
+      const novaTarefaCriada = await resposta.json();
+
+      setTarefas([...tarefas, novaTarefaCriada]);
+
+      setNovaTarefa("");
+      setHorario("");
+      setPrioridade("Média");
+
+    } catch (error) {
+      console.error("Erro ao adicionar tarefa:", error);
+    }
   };
 
 
@@ -113,17 +114,43 @@ function Tarefas() {
   // CONCLUIR TAREFA
   // ================================
 
-  const alternarTarefa = (id) => {
-    setTarefas(
-      tarefas.map((tarefa) =>
-        tarefa.id === id
-          ? {
-              ...tarefa,
-              concluida: !tarefa.concluida
-            }
-          : tarefa
-      )
+  const alternarTarefa = async (id) => {
+
+    const tarefa = tarefas.find(
+      (tarefa) => tarefa.id === id
     );
+
+    if (!tarefa) {
+      return;
+    }
+
+    try {
+      const resposta = await fetch(
+        `http://localhost:3000/tarefas/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            concluida: !tarefa.concluida
+          })
+        }
+      );
+
+      const tarefaAtualizada = await resposta.json();
+
+      setTarefas(
+        tarefas.map((tarefa) =>
+          tarefa.id === id
+            ? tarefaAtualizada
+            : tarefa
+        )
+      );
+
+    } catch (error) {
+      console.error("Erro ao atualizar tarefa:", error);
+    }
   };
 
 
@@ -131,10 +158,25 @@ function Tarefas() {
   // REMOVER TAREFA
   // ================================
 
-  const removerTarefa = (id) => {
-    setTarefas(
-      tarefas.filter((tarefa) => tarefa.id !== id)
-    );
+  const removerTarefa = async (id) => {
+
+    try {
+      await fetch(
+        `http://localhost:3000/tarefas/${id}`,
+        {
+          method: "DELETE"
+        }
+      );
+
+      setTarefas(
+        tarefas.filter(
+          (tarefa) => tarefa.id !== id
+        )
+      );
+
+    } catch (error) {
+      console.error("Erro ao remover tarefa:", error);
+    }
   };
 
 
@@ -160,7 +202,12 @@ function Tarefas() {
   // ================================
 
   const [ano, mes, dia] = dataSelecionada.split("-");
-  const dataBonita = new Date(Number(ano), Number(mes) - 1, Number(dia));
+
+  const dataBonita = new Date(
+    Number(ano),
+    Number(mes) - 1,
+    Number(dia)
+  );
 
   const nomeDia = dataBonita.toLocaleDateString(
     "pt-BR",
@@ -180,21 +227,11 @@ function Tarefas() {
       ============================ */}
 
       <header className="tasks-header">
-        <div>
-          <p className="tasks-small-title">
-            ORGANIZAÇÃO
-          </p>
 
-          <h1>
-            Minhas Tarefas
-          </h1>
-
-          <p className="tasks-subtitle">
-            Organize seus estudos e mantenha tudo em dia.
-          </p>
-        </div>
+       
 
         <div className="tasks-counter">
+
           <strong>
             {pendentes.length}
           </strong>
@@ -202,7 +239,9 @@ function Tarefas() {
           <span>
             pendentes
           </span>
+
         </div>
+
       </header>
 
 
@@ -221,12 +260,15 @@ function Tarefas() {
           {/* CALENDÁRIO CUSTOMIZADO */}
 
           <div className="task-card calendar-card">
+
             <div className="card-title">
+
               <div className="title-icon">
                 📅
               </div>
 
               <div>
+
                 <h2>
                   Calendário
                 </h2>
@@ -234,19 +276,28 @@ function Tarefas() {
                 <span>
                   Escolha um dia
                 </span>
+
               </div>
+
             </div>
 
             <Calendar
-              onChange={(val) => setDataSelecionada(formatarData(val))}
+              onChange={(val) =>
+                setDataSelecionada(
+                  formatarData(val)
+                )
+              }
               value={dataBonita}
               locale="pt-BR"
               tileClassName={({ date }) =>
-                temTarefaNoDia(date) ? "dia-com-tarefa" : null
+                temTarefaNoDia(date)
+                  ? "dia-com-tarefa"
+                  : null
               }
             />
 
             <div className="selected-date">
+
               <span>
                 {nomeDia}
               </span>
@@ -254,19 +305,24 @@ function Tarefas() {
               <strong>
                 {tarefasDoDia.length} tarefas
               </strong>
+
             </div>
+
           </div>
 
 
           {/* ADICIONAR TAREFA */}
 
           <div className="task-card add-task-card">
+
             <div className="card-title">
+
               <div className="title-icon purple">
                 +
               </div>
 
               <div>
+
                 <h2>
                   Nova tarefa
                 </h2>
@@ -274,10 +330,13 @@ function Tarefas() {
                 <span>
                   Adicione uma atividade
                 </span>
+
               </div>
+
             </div>
 
             <form onSubmit={adicionarTarefa}>
+
               <label>
                 Tarefa
               </label>
@@ -292,7 +351,9 @@ function Tarefas() {
               />
 
               <div className="form-row">
+
                 <div>
+
                   <label>
                     Horário
                   </label>
@@ -304,9 +365,11 @@ function Tarefas() {
                       setHorario(e.target.value)
                     }
                   />
+
                 </div>
 
                 <div>
+
                   <label>
                     Prioridade
                   </label>
@@ -321,7 +384,9 @@ function Tarefas() {
                     <option>Média</option>
                     <option>Alta</option>
                   </select>
+
                 </div>
+
               </div>
 
               <button
@@ -331,7 +396,9 @@ function Tarefas() {
                 <span>+</span>
                 Adicionar tarefa
               </button>
+
             </form>
+
           </div>
 
         </section>
@@ -342,8 +409,11 @@ function Tarefas() {
         ============================ */}
 
         <section className="tasks-right">
+
           <div className="tasks-list-header">
+
             <div>
+
               <span>
                 {nomeDia}
               </span>
@@ -351,38 +421,53 @@ function Tarefas() {
               <h2>
                 Tarefas do dia
               </h2>
+
             </div>
 
             <div className="task-total">
               {tarefasDoDia.length}
             </div>
+
           </div>
 
 
           {/* PENDENTES */}
 
           <div className="task-section">
+
             <div className="section-label">
+
               <span className="status-dot orange"></span>
+
               Pendentes
+
               <span>
                 {pendentes.length}
               </span>
+
             </div>
 
             {pendentes.length === 0 ? (
+
               <div className="empty-tasks">
+
                 🎉
+
                 <p>
                   Nenhuma tarefa pendente!
                 </p>
+
               </div>
+
             ) : (
+
               pendentes.map((tarefa) => (
+
                 <div
                   className="task-item"
                   key={tarefa.id}
                 >
+
                   <button
                     className="check-button"
                     onClick={() =>
@@ -393,11 +478,13 @@ function Tarefas() {
                   </button>
 
                   <div className="task-info">
+
                     <strong>
                       {tarefa.titulo}
                     </strong>
 
                     <div className="task-meta">
+
                       <span>
                         🕐 {tarefa.horario}
                       </span>
@@ -407,7 +494,9 @@ function Tarefas() {
                       >
                         {tarefa.prioridade}
                       </span>
+
                     </div>
+
                   </div>
 
                   <button
@@ -418,29 +507,41 @@ function Tarefas() {
                   >
                     ×
                   </button>
+
                 </div>
+
               ))
+
             )}
+
           </div>
 
 
           {/* CONCLUÍDAS */}
 
           {concluidas.length > 0 && (
+
             <div className="task-section completed-section">
+
               <div className="section-label">
+
                 <span className="status-dot green"></span>
+
                 Concluídas
+
                 <span>
                   {concluidas.length}
                 </span>
+
               </div>
 
               {concluidas.map((tarefa) => (
+
                 <div
                   className="task-item completed"
                   key={tarefa.id}
                 >
+
                   <button
                     className="check-button checked"
                     onClick={() =>
@@ -451,11 +552,13 @@ function Tarefas() {
                   </button>
 
                   <div className="task-info">
+
                     <strong>
                       {tarefa.titulo}
                     </strong>
 
                     <div className="task-meta">
+
                       <span>
                         🕐 {tarefa.horario}
                       </span>
@@ -463,7 +566,9 @@ function Tarefas() {
                       <span className="completed-text">
                         Concluída
                       </span>
+
                     </div>
+
                   </div>
 
                   <button
@@ -474,14 +579,19 @@ function Tarefas() {
                   >
                     ×
                   </button>
+
                 </div>
+
               ))}
+
             </div>
+
           )}
 
         </section>
 
       </div>
+
     </main>
   );
 }
