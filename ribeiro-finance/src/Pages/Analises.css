@@ -1,0 +1,144 @@
+.analises-page {
+  padding: 24px;
+}
+
+.analises-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.analises-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.analises-empty p {
+  color: #888;
+  font-size: 1rem;
+}
+
+.analises-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.analises-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.analises-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* Category List */
+.analises-category-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.analises-category-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.analises-category-row:last-child {
+  border-bottom: none;
+}
+
+.analises-category-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.analises-category-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.analises-category-name {
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.analises-category-amount {
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.analises-progress-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #2a2a2a;
+  margin-top: 8px;
+}
+
+.analises-progress-fill {
+  height: 6px;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* Chart */
+.analises-chart-container {
+  width: 100%;
+  min-height: 300px;
+}
+
+/* Tooltip */
+.analises-tooltip {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.analises-tooltip-label {
+  color: #888;
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+}
+
+.analises-tooltip-value {
+  color: #22c55e;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .analises-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analises-title {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,210 @@
+/* ==========================================
+   CONFIGURAÇÕES PAGE STYLES
+   ========================================== */
+
+.config-page {
+  max-width: 700px;
+}
+
+.config-section {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.config-section__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.config-section__description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Categories List */
+.config-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.config-category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+}
+
+.config-category-item__info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.config-category-item__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.config-category-item__name {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.config-category-item__delete {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.config-category-item__delete:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Add Category Form */
+.config-add-category__inputs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.config-input {
+  flex: 1;
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.config-input:focus {
+  border-color: #22c55e;
+}
+
+.config-input::placeholder {
+  color: #555;
+}
+
+.config-color-input {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  background: #0d0d0d;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.config-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #22c55e;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+  font-family: inherit;
+}
+
+.config-add-btn:hover {
+  background: #16a34a;
+}
+
+.config-success {
+  color: #22c55e;
+  font-size: 13px;
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+/* Data section */
+.config-data-info__text {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.config-data-info__text code {
+  background: #0d0d0d;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #22c55e;
+}
+
+.config-data-info__hint {
+  font-size: 13px;
+  color: #666;
+}
+
+.config-data-info__hint code {
+  background: #0d0d0d;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #22c55e;
+}
+
+/* About */
+.config-about p {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.config-about__desc {
+  color: #666 !important;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 600px) {
+  .config-add-category__inputs {
+    flex-direction: column;
+  }
+
+  .config-input {
+    width: 100%;
+  }
+
+  .config-color-input {
+    width: 100%;
+    height: 36px;
+  }
+
+  .config-add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

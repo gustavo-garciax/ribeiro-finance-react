@@ -1,17 +1,12 @@
-import Header from "./Components/Header";
-import Router from "./Router"
-
-
+import { FinanceProvider } from './contexts/FinanceContext'
+import Router from './Router'
 
 function App() {
   return (
-    <>
-      <Header />
-
+    <FinanceProvider>
       <Router />
-
-    </>
-  );
+    </FinanceProvider>
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,372 @@
+.metas-page {
+  padding: 24px;
+}
+
+.metas-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+/* Grid Layout */
+.metas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Goal Card */
+.metas-goal-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.metas-goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metas-goal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.metas-goal-duration {
+  font-size: 0.8125rem;
+  color: #888;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.metas-goal-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.metas-goal-remaining-months {
+  font-size: 0.8125rem;
+  color: #888;
+  margin: 0;
+}
+
+/* Progress Section */
+.metas-goal-progress-section {
+  margin-top: 4px;
+}
+
+.metas-goal-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.metas-goal-progress-label {
+  font-size: 0.8125rem;
+  color: #888;
+}
+
+.metas-goal-progress-percent {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #22c55e;
+}
+
+.metas-progress-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #2a2a2a;
+}
+
+.metas-progress-fill {
+  height: 6px;
+  border-radius: 3px;
+  background: #22c55e;
+  transition: width 0.4s ease;
+}
+
+/* Values */
+.metas-goal-values {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.metas-goal-value-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metas-goal-value-label {
+  font-size: 0.8125rem;
+  color: #888;
+}
+
+.metas-goal-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.metas-goal-value.green {
+  color: #22c55e;
+}
+
+.metas-goal-value.red {
+  color: #ef4444;
+}
+
+/* Deposit Section */
+.metas-goal-deposit {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.metas-deposit-input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.metas-deposit-input::placeholder {
+  color: #555;
+}
+
+.metas-deposit-input:focus {
+  border-color: #22c55e;
+}
+
+/* Remove number input spinners */
+.metas-deposit-input::-webkit-outer-spin-button,
+.metas-deposit-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.metas-deposit-input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.metas-deposit-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.metas-deposit-btn:hover:not(:disabled) {
+  background: #16a34a;
+}
+
+.metas-deposit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Add Goal Card */
+.metas-add-card {
+  border: 2px dashed #2a2a2a;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  min-height: 200px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.metas-add-card:hover {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.metas-add-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+}
+
+.metas-add-text {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #888;
+}
+
+/* Modal */
+.metas-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.metas-modal {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 32px;
+  width: 100%;
+  max-width: 440px;
+  margin: 16px;
+}
+
+.metas-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.metas-modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.metas-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.metas-modal-close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Form */
+.metas-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.metas-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metas-form-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #888;
+}
+
+.metas-form-input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.metas-form-input::placeholder {
+  color: #555;
+}
+
+.metas-form-input:focus {
+  border-color: #22c55e;
+}
+
+.metas-form-input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+  cursor: pointer;
+}
+
+.metas-form-submit {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.metas-form-submit:hover {
+  background: #16a34a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .metas-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .metas-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .metas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metas-modal {
+    padding: 24px;
+    margin: 12px;
+  }
+}
